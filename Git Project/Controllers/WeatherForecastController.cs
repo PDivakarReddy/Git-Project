@@ -29,5 +29,17 @@ namespace Git_Project.Controllers
             })
             .ToArray();
         }
+
+        [HttpDelete(Name = "DeleteWeatherForecast")]
+        public IEnumerable<WeatherForecast> Delete()
+        {
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Today.AddHours(index),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
     }
 }
